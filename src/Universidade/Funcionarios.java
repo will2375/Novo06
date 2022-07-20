@@ -1,16 +1,22 @@
 package Universidade;
 
-import java.util.Scanner;
+import Universidade.InterfacesUniversidades.Reembolso;
 
-public abstract class Funcionarios {
-
-    Scanner input = new Scanner(System.in);
-
+public abstract class Funcionarios implements Reembolso {
     private String nome;
     private String cpf;
     private String numRegistro;
     private String orgaoLotaçao;
     private double salario;
+
+
+    public Funcionarios() {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.numRegistro = numRegistro;
+        this.orgaoLotaçao = orgaoLotaçao;
+    }
+
 
     public String getNome() {
         return nome;
@@ -51,14 +57,5 @@ public abstract class Funcionarios {
     public void setSalario(double salario) {
         this.salario = salario;
     }
-
-    public Funcionarios() {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.numRegistro = numRegistro;
-        this.orgaoLotaçao = orgaoLotaçao;
-        this.salario = salario;
-    }
 }
-
 

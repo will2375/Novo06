@@ -1,9 +1,13 @@
 package Universidade;
 
-public class FuncionariosAdm extends Funcionarios {
+import Universidade.InterfacesUniversidades.Salario;
+
+public class FuncionariosAdm extends Funcionarios implements Salario {
 
     private String funcao;
     private String senioridade;
+
+    private double despesas;
 
     public FuncionariosAdm() {
         super();
@@ -13,6 +17,14 @@ public class FuncionariosAdm extends Funcionarios {
 
     public String getFuncao() {
         return funcao;
+    }
+
+    public double getDespesas() {
+        return despesas;
+    }
+
+    public void setDespesas(double despesas) {
+        this.despesas = despesas;
     }
 
     public void setFuncao(String funcao) {
@@ -34,10 +46,11 @@ public class FuncionariosAdm extends Funcionarios {
         setCpf("759034867-9");
         setNumRegistro("432");
         setOrgaoLotaçao("sp");
-        setSalario(2700);
         setFuncao("contador");
         setSenioridade("Lider");
+    }
 
+    public void status() {
         System.out.println("Administrador: " + this.getNome());
         System.out.println("CPF: " + this.getCpf());
         System.out.println("Numero de registro: " + this.getNumRegistro());
@@ -46,11 +59,24 @@ public class FuncionariosAdm extends Funcionarios {
         System.out.println("Senioridade: " + this.getSenioridade());
 
     }
+
+    @Override
+    public double salario() {
+        setSalario(2700);
+        return getSalario();
+    }
+
     public void aumento10() {
-        double salario10 = this.getSalario() * 0.1;
-        salario10 = this.getSalario() + salario10;
-        System.out.println("O salario era " + this.getSalario() + "Agora é " + salario10);
+        double salario10 = salario() * 0.1;
+        salario10 = salario() + salario10;
+        System.out.println("O salario era " + salario() + "Agora é " + salario10);
     }
 
 
+    @Override
+    public double calculoreembolso() {
+        setDespesas(350);
+        System.out.println("O valor do reembolso é de: " + getDespesas());
+        return 0;
+    }
 }
